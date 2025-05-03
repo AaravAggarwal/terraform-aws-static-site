@@ -21,6 +21,6 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Sync website to S3
-        run: aws s3 sync website/ s3://$S3_BUCKET_NAME --acl public-read --delete
+        run: aws s3 sync website/ s3://$S3_BUCKET_NAME --delete
         env:
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
