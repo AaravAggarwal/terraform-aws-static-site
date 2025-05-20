@@ -20,9 +20,9 @@ jobs:
         uses: AaravAggarwal/stackgen-drift-detection-action@main
         env:
           STACKGEN_TOKEN: ${{ secrets.STACKGEN_TOKEN }}
+          TMPDIR: ${{ github.workspace }}/tmp
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          TMPDIR: ${{ github.workspace }}/tmp
         with:
           appstack_id: 'b454489b-9eb9-4f4c-816d-16c73d18b3ce'
           region: 'us-east-1'
