@@ -12,6 +12,8 @@ jobs:
   drift:
     runs-on: ubuntu-latest
     steps:
+      - name: Create temp directory inside workspace
+        run: mkdir -p /github/workspace/tmp
       - name: Trigger StackGen Drift Detection
         uses: AaravAggarwal/stackgen-drift-detection-action@main
         env:
