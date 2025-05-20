@@ -1,23 +1,26 @@
 name: Drift Detection
 
 on:
-  # Manual trigger
   workflow_dispatch:
-
-  # Scheduled run every day at 6 AM UTC
   schedule:
     - cron: '0 6 * * *'
 
 jobs:
   drift:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Create temp directory inside workspace
-        run: mkdir -p /github/workspace/tmp
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Create temporary directory
+        run: mkdir -p tmp
+
       - name: Trigger StackGen Drift Detection
         uses: AaravAggarwal/stackgen-drift-detection-action@main
         env:
           STACKGEN_TOKEN: ${{ secrets.STACKGEN_TOKEN }}
+          TMPDIR: ${{ github.workspace }}/tmp
         with:
           appstack_id: 'b454489b-9eb9-4f4c-816d-16c73d18b3ce'
           region: 'us-east-1'
